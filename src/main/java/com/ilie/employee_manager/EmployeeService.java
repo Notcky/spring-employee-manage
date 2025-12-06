@@ -9,7 +9,7 @@ public class EmployeeService {
 
     private final EmployeeRepository employeeRepository;
 
-    @Autowired // Dependency Injection prin constructor
+    @Autowired
     public EmployeeService(EmployeeRepository employeeRepository) {
         this.employeeRepository = employeeRepository;
     }
@@ -19,6 +19,17 @@ public class EmployeeService {
     }
 
     public Employee addEmployee(Employee employee) {
+        return employeeRepository.save(employee);
+    }
+
+    public Employee updateEmployee(Long id, Employee employeeDetails) {
+        Employee employee = employeeRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Angajatul nu exista cu id: " + id));
+
+        employee.setName(employeeDetails.getName());
+        employee.setEmail(employeeDetails.getEmail());
+        employee.setJobTitle(employeeDetails.getJobTitle());
+
         return employeeRepository.save(employee);
     }
 

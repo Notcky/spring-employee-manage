@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Management System</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+    <h1>👨‍💼 Sistem de Gestionare Angajați</h1>
+
+    <div id="alertContainer"></div>
+
+    <div class="card">
+        <h3>Adaugă Angajat Nou</h3>
+        <form id="employeeForm">
+            <input type="hidden" id="employeeId">
+
+            <div class="form-group">
+                <input type="text" id="name" placeholder="Nume Complet" required>
+                <input type="email" id="email" placeholder="Email" required>
+                <input type="text" id="jobTitle" placeholder="Funcție / Job" required>
+            </div>
+
+            <div class="form-actions">
+                <button type="submit" class="btn-save" id="submitBtn">Salvează Angajat</button>
+                <button type="button" class="btn-cancel" id="cancelBtn" style="display:none;" onclick="resetForm()">Anulează</button>
+            </div>
+        </form>
+    </div>
+
+    <div class="card">
+        <h3>Listă Angajați</h3>
+
+        <div class="search-group">
+            <input type="text" id="searchInput" onkeyup="filterTable()" placeholder="Caută după Nume sau Email...">
+        </div>
+
+        <table class="table">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nume</th>
+                <th>Email</th>
+                <th>Funcție</th>
+                <th>API Data</th>
+                <th>Acțiuni</th>
+            </tr>
+            </thead>
+            <tbody id="employeeTableBody"></tbody>
+        </table>
+    </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
